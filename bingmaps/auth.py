@@ -1,5 +1,5 @@
-# Pyomniar
-# Copyright 2011 Chris Kelly
+# Pybingmaps
+# Copyright 2011 Lumatic, Inc
 # See LICENSE for details.
 
 import urllib
@@ -25,14 +25,6 @@ class KeyAuthHandler(AuthHandler):
     
     def __init__(self, api_key):
         self.api_key = api_key
-    
-    # def apply_auth(self, url, method, headers, parameters):
-    #     key = urllib.urlencode({'apikey': self.api_key})
-    #     if not len(parameters):
-    #         url += '?'
-    #     else:
-    #         url += "&"
-    #     url += key
         
     def append_auth(self, url, method, headers, parameters):
         parameters['key'] = self.api_key

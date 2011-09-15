@@ -6,11 +6,14 @@ import httplib
 import urllib
 import time
 import re
+import logging
 
 from bingmaps.error import BingMapsError
 from bingmaps.utils import convert_to_utf8_str
 
 re_path_template = re.compile('{\w+}')
+
+logger = logging.getLogger("pybingmaps")
 
 def bind_api(**config):
 
@@ -84,6 +87,7 @@ def bind_api(**config):
             if len(self.parameters):
                 url = '%s?%s' % (url, urllib.urlencode(self.parameters))
 
+            logger.debug("%s%s%s" % ("http://", self.host, url))
             # Continue attempting request until successful
             # or maximum number of retries is reached.
             retries_performed = 0
