@@ -2,7 +2,6 @@
 # Copyright 2011 Lumatic, Inc
 # See LICENSE for details.
 
-import mimetypes
 
 def convert_to_utf8_str(arg):
     # written by Michael Norton (http://docondev.blogspot.com/)
@@ -11,6 +10,7 @@ def convert_to_utf8_str(arg):
     elif not isinstance(arg, str):
         arg = str(arg)
     return arg
+
 
 def import_simplejson():
     try:

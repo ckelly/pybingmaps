@@ -2,6 +2,7 @@
 # Copyright 2011 Lumatic, Inc
 # See LICENSE for details.
 
+
 class BingMapsError(Exception):
     """Bing Maps exception"""
 

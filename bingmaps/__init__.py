@@ -12,7 +12,8 @@ __license__ = 'MIT'
 from bingmaps.error import BingMapsError
 from bingmaps.api import BingMapsAPI
 
+
 def debug(enable=True, level=1):
-    
+
     import httplib
     httplib.HTTPConnection.debuglevel = level

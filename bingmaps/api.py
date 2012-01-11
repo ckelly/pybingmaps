@@ -2,8 +2,6 @@
 # Copyright 2011 Lumatic, Inc
 # See LICENSE for details.
 
-import os
-
 from bingmaps.binder import bind_api
 from bingmaps.parsers import JSONParser
 from bingmaps.utils import import_simplejson
@@ -13,17 +11,17 @@ json = import_simplejson()
 
 class BingMapsAPI(object):
     '''Bing Maps API'''
-    
+
     def __init__(self,
             host='dev.virtualearth.net', api_key=None,
             retry_count=0, retry_errors=None, retry_delay=0,
-            parser=None):
+            parser=None, json_decimal=False):
             # short circuit this for now, change if we need Oauth, etc later
         self.host = host
         self.retry_count = retry_count
         self.retry_delay = retry_delay
         self.retry_errors = retry_errors
-        self.parser = parser or JSONParser()
+        self.parser = parser or JSONParser(use_decimal=json_decimal)
         self.api_key = api_key
 
         # no need to have user init this separately, so do it for them
@@ -43,10 +41,9 @@ class BingMapsAPI(object):
 
         # we're excluding format as we're only handling JSON
         return bind_api(
-        path = '/REST/{version}/Routes/{travelMode}',
-        allowed_param = ['avoid', 'distanceBeforeFirstTurn', 'heading', 'optimize',
-         'routePathOutput', 'tolerances', 'distanceUnit', 'dateTime', 
+        path='/REST/{version}/Routes/{travelMode}',
+        allowed_param=['avoid', 'distanceBeforeFirstTurn', 'heading', 'optimize',
+         'routePathOutput', 'tolerances', 'distanceUnit', 'dateTime',
          'timeType', 'maxSolutions', 'suppressStatus', 'jsonp', 'output',
-         'jsonso', 'culture', 'mapView', 'userLocation', 'userIp'] + ["wp.%d" % x for x in xrange(0,25)]
+         'jsonso', 'culture', 'mapView', 'userLocation', 'userIp'] + ["wp.%d" % x for x in xrange(0, 25)]
     )(self, version=version, travelMode=travelMode, output='json', *args, **kargs)
-

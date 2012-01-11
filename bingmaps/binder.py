@@ -15,6 +15,7 @@ re_path_template = re.compile('{\w+}')
 
 logger = logging.getLogger("pybingmaps")
 
+
 def bind_api(**config):
 
     class APIMethod(object):
@@ -27,21 +28,21 @@ def bind_api(**config):
 
             self.api = api
             self.parser = kargs.pop('parser', self.api.parser)
-            
+
             #self.post_data = kargs.pop('post_data', None)
             self.retry_count = kargs.pop('retry_count', api.retry_count)
             self.retry_delay = kargs.pop('retry_delay', api.retry_delay)
             self.retry_errors = kargs.pop('retry_errors', api.retry_errors)
             self.headers = kargs.pop('headers', {})
             self.post_data = kargs.pop('post_data', {})
-            
+
             self.build_parameters(args, kargs)
 
             # Perform any path variable substitution
             self.build_path()
-            self.scheme = 'http://'    
+            self.scheme = 'http://'
             self.host = api.host
-            
+
             self.key = api.api_key
 
         def build_parameters(self, args, kargs):
@@ -83,7 +84,7 @@ def bind_api(**config):
                     self.scheme + self.host + url,
                     self.method, self.headers, self.parameters
                 )
-                
+
             if len(self.parameters):
                 url = '%s?%s' % (url, urllib.urlencode(self.parameters))
 
@@ -105,9 +106,11 @@ def bind_api(**config):
 
                 # Exit request loop if non-retry error code
                 if self.retry_errors:
-                    if resp.status not in self.retry_errors: break
+                    if resp.status not in self.retry_errors:
+                        break
                 else:
-                    if resp.status == 200: break
+                    if resp.status == 200:
+                        break
 
                 # Sleep before retrying request again
                 time.sleep(self.retry_delay)
@@ -126,13 +129,12 @@ def bind_api(**config):
             result = self.parser.parse(self, resp.read())
 
             conn.close()
-            
-            return result
 
+            return result
 
     def _call(api, *args, **kargs):
 
         method = APIMethod(api, args, kargs)
         return method.execute()
-        
+
     return _call
