@@ -29,20 +29,19 @@ class JSONParser(Parser):
 
     payload_format = 'json'
 
-    def __init__(self, use_decimal=False):
-        self.use_decimal = use_decimal
+    def __init__(self):
         self.json_lib = import_simplejson()
 
     def parse(self, method, payload):
         try:
-            json = self.json_lib.loads(payload, use_decimal=self.use_decimal)
+            json = self.json_lib.loads(payload)
         except Exception, e:
             raise BingMapsError('Failed to parse JSON payload: %s' % e)
 
         return json
 
     def parse_error(self, payload):
-        error = self.json_lib.loads(payload, use_decimal=self.use_decimal)
+        error = self.json_lib.loads(payload)
         # if error.has_key('errorDetails'):
         #     return error['errorDetails']
         # else:

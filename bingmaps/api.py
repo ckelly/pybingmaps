@@ -15,13 +15,13 @@ class BingMapsAPI(object):
     def __init__(self,
             host='dev.virtualearth.net', api_key=None,
             retry_count=0, retry_errors=None, retry_delay=0,
-            parser=None, json_decimal=False):
+            parser=None):
             # short circuit this for now, change if we need Oauth, etc later
         self.host = host
         self.retry_count = retry_count
         self.retry_delay = retry_delay
         self.retry_errors = retry_errors
-        self.parser = parser or JSONParser(use_decimal=json_decimal)
+        self.parser = parser or JSONParser()
         self.api_key = api_key
 
         # no need to have user init this separately, so do it for them
