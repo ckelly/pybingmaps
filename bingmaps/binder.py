@@ -1,9 +1,9 @@
 # Pybingmaps
-# Copyright 2011 Lumatic, Inc
+# Copyright 2014 Chris Kelly
 # See LICENSE for details.
 
-import httplib
-import urllib
+import requests
+from six.moves.urllib import parse
 import time
 import re
 import logging

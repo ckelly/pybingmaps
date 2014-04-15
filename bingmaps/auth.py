@@ -1,5 +1,5 @@
 # Pybingmaps
-# Copyright 2011 Lumatic, Inc
+# Copyright 2014 Chris Kelly
 # See LICENSE for details.
 
 

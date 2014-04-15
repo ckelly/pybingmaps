@@ -1,13 +1,11 @@
 # Pybingmaps
-# Copyright 2011 Lumatic, Inc
+# Copyright 2014 Chris Kelly
 # See LICENSE for details.
 
 from bingmaps.binder import bind_api
 from bingmaps.parsers import JSONParser
 from bingmaps.utils import import_simplejson
 from bingmaps.auth import KeyAuthHandler
-json = import_simplejson()
-
 
 class BingMapsAPI(object):
     '''Bing Maps API'''

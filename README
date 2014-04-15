@@ -1,18 +1,18 @@
 pybingmaps
 A Python Library for Bing Maps Web Services
 
-Bug tracker: http://github.com/omniar/pybingmaps/issues
+Bug tracker: http://github.com/ckelly/pybingmaps/issues
 
-Souce code: 
-    Library: http://github.com/omniar/pybingmaps
+Souce code:
+    Library: http://github.com/ckelly/pybingmaps
 
-Author: Lumatic (see AUTHORS for more information)
+Author: Chris Kelly (see AUTHORS for more information)
 License: MIT
 Dependencies:
-  Python 2.4 or newer
+  Python 2.7 or newer; Python 3.3 or Newer
   Simplejson <http://undefined.org/python/#simplejson>
-    **Included in python 2.6+
-    
+    **Included in python 2.7+
+
 Notes:
-  This code is based on Tweepy by Joshua Roesslein
-  - http://github.com/joshthecoder/tweepy
+  This code is originally based on Tweepy by Joshua Roesslein
+  - http://github.com/tweepy/tweepy
